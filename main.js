@@ -75,6 +75,7 @@ var ul = document.querySelector('div .list-group-item')
 listGroupItem.insertBefore(newDiv, ul)
 
 console.log(newDiv);
+//
 
 //Task 7 done
 
