@@ -1,81 +1,64 @@
-//Traversing the DOM
+var form = document.getElementById('addForm');
+var itemlist = document.getElementById('items');
+var filter = document.getElementById('filter');
 
-var itemList = document.querySelector('#items');
-//parentNode
-// console.log(itemList.parentNode);
-// itemList.parentNode.style.backgroundColor = '#f4f4f4';
-// console.log(itemList.parentNode.parentNode.parentNode);
+//Form Submit Event
+form.addEventListener('submit', addItem);
 
-//parentElement
-// console.log(itemList.parentElement);
-// itemList.parentElement.style.backgroundColor = '#f4f4f4';
-// console.log(itemList.parentElement.parentElement.parentElement);
+//Delete Event
+itemlist.addEventListener('click', removeItem);
 
-//childNodes
-// console.log(itemList.childNodes)
-
-//children
-// console.log(itemList.children)
-// console.log(itemList.children[1]);
-// itemList.children[1].style.backgroundColor = 'yellow';
-
-//FirstChild
-// console.log(itemList.firstChild);
-
-//firstElementChild
-// console.log(itemList.firstElementChild);
-// itemList.firstElementChild.textContent = 'Helloo';
-
-//LastChild
-// console.log(itemList.lastChild);
-
-// //lastElementChild
-// console.log(itemList.lastElementChild);
-// itemList.lastElementChild.textContent = 'Helloo';
+//filter event
+filter.addEventListener('keyup', filterItems);
 
 
-//nextSibling
-// console.log(itemList.nextSibling)
+//Add item
+function addItem(e){
+    e.preventDefault();
+       
+    //console.log(1);
+    //Get Input Value
+    var newItem = document.getElementById('item').value;
 
-//nextElementSibling
-// console.log(itemList.nextElementSibling)
+    //Create New Element
+    var li = document.createElement('li');
 
-//previousSibling
-// console.log(itemList.previousSibling)
+    //Add class
+    li.className = 'list-group-item';
+    //console.log(li);
+ 
+    //Add text node with input value
+    li.appendChild(document.createTextNode(newItem));
 
-//previousElementSibling
-// console.log(itemList.previousElementSibling)
-// itemList.previousElementSibling.style.color='pink';
+    //Create Delete Button Element
+    var deleteBtn = document.createElement('button');
 
-//create a Div
-var newDiv = document.createElement('div');
+    //Add classes to delete button
+    deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
+    //create textnode
+    deleteBtn.appendChild(document.createTextNode('X'));
+    //append deleteBtn to li
+    li.appendChild(deleteBtn);
 
-//Add class
-newDiv.className='Hello';
+    itemlist.appendChild(li);
 
-//Add id
-newDiv.id='Hello1';
 
-//Add attribute
-newDiv.setAttribute('title', 'HelloDiv');
+}
 
-//create text Node
-var newDivText = document.createTextNode('Hello World');
-newDiv.appendChild(newDivText)
+//Remove Item
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+        if(confirm('Are You Sure?')){
+            var li = e.target.parentElement;
+            itemlist.removeChild(li);
+        }
+    }
+    // console.log(1);
+}
 
-//adding this div to DOM
-
-var container = document.querySelector('header .container')
-var h1 = document.querySelector('header h1')
-
-var listGroupItem = document.querySelector('div .list-group')
-var ul = document.querySelector('div .list-group-item')
-
-//listGroupItem.insertBefore(newDiv, h1)
-listGroupItem.insertBefore(newDiv, ul)
-
-console.log(newDiv);
-//
-
-//Task 7 done
-
+//Filter Items
+function filterItems(e){
+    //convert text to lowercase
+    var text = e.target.value.toLowerCase()
+    console.log(text);
+}
