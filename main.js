@@ -76,3 +76,5 @@ listGroupItem.insertBefore(newDiv, ul)
 
 console.log(newDiv);
 
+//Task 7 done
+
