@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+    <head>
+        <title>LocalStorage Task</title>
+    </head>
+    <body>
+        <form onsubmit="saveToLocalStorage(event)">
+            <label>Name:</label>
+            <input type="name" id="name" name="username" /><br><br>
+            <label>Email:</label>
+            <input type="email" id="email" name="email" /><br><br>
+            <label>Phone:</label>
+            <input type="phone" id="phone" name="phone"/><br><br>
+            <button>Submit</button>
+
+        </form>
+        <script>
+            function saveToLocalStorage(event){
+                event.preventDefault();
+                const name = event.target.username.value;
+                const email = event.target.email.value;
+                const phone = event.target.phone.value;
+                
+                localStorage.setItem('name', name);
+                localStorage.setItem('email', email);
+                localStorage.setItem('phone', phone);
+                
+            //     const type = localStorage.getItem('name');
+            //    console.log(typeof(type));
+            }
+
+        </script>
+
+    </body>
+
+
+
+</html>
