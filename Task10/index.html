@@ -16,16 +16,22 @@
         <script>
             function saveToLocalStorage(event){
                 event.preventDefault();
+                
                 const name = event.target.username.value;
                 const email = event.target.email.value;
                 const phone = event.target.phone.value;
+                let arr = [];
+                const myObj = {
+                    name: name,
+                    email: email,
+                    phone: phone
+
+};
+
+              localStorage.setItem('userdetails', JSON.stringify(myObj));
+             
                 
-                localStorage.setItem('name', name);
-                localStorage.setItem('email', email);
-                localStorage.setItem('phone', phone);
-                
-            //     const type = localStorage.getItem('name');
-            //    console.log(typeof(type));
+              
             }
 
         </script>
