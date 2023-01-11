@@ -47,12 +47,34 @@
                         localStorage.removeItem(myObj.email)
                         parentElement.removeChild(childElement)
                 }
-                
+
+                //edit button
+                const editButton = document.createElement('input')
+                editButton.type= "button"
+                editButton.value="Edit"
+                editButton.id = "dataId"
+                // const dataName = localStorage.getItem(JSON.parse(myObj.name));
+                // const dataEmail = localStorage.getItem(myObj.email);
+                // const dataPhone = localStorage.getItem(myObj.phone);
+           
+
+                editButton.onclick = () => {
+                    localStorage.removeItem(myObj.email)
+                    parentElement.removeChild(childElement)
+                 document.getElementById("name").value = myObj.name
+                 document.getElementById("email").value = myObj.email
+                 document.getElementById("phone").value = myObj.phone
+                // const pname=localStorage.getItem("name");
+
+                // Grab the html element by selector and assign a value-
+
+// document.getElementById("name").value=pname;
+                }
+                // createedit button
                 childElement.appendChild(deleteButton);
-                
+                childElement.appendChild(editButton)
                 
                 parentElement.appendChild(childElement);
-
                 //parentElement.innerHTML = parentElement.innerHTML +`<li>${myObj.name} - ${myObj.email}</li>`;
             }
           
