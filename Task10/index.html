@@ -32,13 +32,30 @@
            localStorage.setItem(myObj.email, JSON.stringify(myObj));
            showDataOnScreen(myObj);
             }
+           
             function showDataOnScreen(myObj){
                 const parentElement = document.getElementById('listOfItems');
-                // const childElement = document.createElement('li')
-                // childElement.textContent = myObj.name + "- " + myObj.email + "- "+ myObj.phone;
-                // parentElement.appendChild(childElement);
-                parentElement.innerHTML = parentElement.innerHTML +`<li>${myObj.name} - ${myObj.email}</li>`;
+                const childElement = document.createElement('li')
+                childElement.textContent = myObj.name + "- " + myObj.email + "- "+ myObj.phone;
+                
+                //delete button and onclick event deletes data from screen
+                // as well as from localhost
+                const deleteButton = document.createElement('input')
+                deleteButton.type="button"
+                deleteButton.value="Delete"
+                deleteButton.onclick = ()=>{
+                        localStorage.removeItem(myObj.email)
+                        parentElement.removeChild(childElement)
+                }
+                
+                childElement.appendChild(deleteButton);
+                
+                
+                parentElement.appendChild(childElement);
+
+                //parentElement.innerHTML = parentElement.innerHTML +`<li>${myObj.name} - ${myObj.email}</li>`;
             }
+          
 
         </script>
 
